@@ -1,0 +1,5 @@
+Variable,DM_Statistic,P_Value,Significant,Direction
+Real_GDP,-0.8125,0.4266,False,VAR better
+CPI,-4.0786,0.0006,True,VAR better
+Unemployment,-0.8627,0.399,False,VAR better
+Fed_Funds_Rate,-2.1874,0.0414,True,VAR better
