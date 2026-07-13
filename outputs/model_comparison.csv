@@ -1,0 +1,5 @@
+Variable,RW RMSE,VAR RMSE,Improvement %
+Real_GDP,2.6415,2.5629,3.0
+CPI,1.3144,0.9615,26.8
+Unemployment,35.3066,35.0438,0.7
+Fed_Funds_Rate,123.6874,122.6876,0.8
