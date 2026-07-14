@@ -19,12 +19,13 @@ A Python-based macroeconomic forecasting engine that builds, validates, and comp
 
 ### Model Comparison (RMSE — lower is better)
 
-| Variable | RW RMSE | VAR RMSE | Improvement | Stat. Significant? |
-|---|---|---|---|---|
-| Real GDP | — | — | — | — |
-| CPI | — | — | — | — |
-| Unemployment | — | — | — | — |
-| Fed Funds Rate | — | — | — | — |
+| Variable | RW RMSE | VAR RMSE | Improvement % | DM Statistic | p-value | Stat. Significant? |
+|---|---|---|---|---|---|---|
+| Real GDP       | 2.6415 | 2.5629 | 3.0 | -0.8125 | 0.4266 | No |
+| CPI            | 1.3144 | 0.9615 | 26.8 | -4.0786 | 0.0006 | Yes |
+| Unemployment   | 35.3066 | 35.0438 | 0.7 | -0.8627 | 0.399 | No |
+| Fed Funds Rate | 123.6874 | 122.6876 | 0.8 | -2.1874 | 0.0414 | Yes |
+
 
 > Run `notebooks/01_data.ipynb` to populate this table with your results. Values are saved automatically to `outputs/final_model_evaluation.csv`.
 
