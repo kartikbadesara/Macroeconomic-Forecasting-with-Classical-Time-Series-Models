@@ -27,8 +27,6 @@ A Python-based macroeconomic forecasting engine that builds, validates, and comp
 | Fed Funds Rate | 123.6874 | 122.6876 | 0.8 | -2.1874 | 0.0414 | Yes |
 
 
-> Run `notebooks/01_data.ipynb` to populate this table with your results. Values are saved automatically to `outputs/final_model_evaluation.csv`.
-
 ---
 
 ### Charts
