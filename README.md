@@ -8,7 +8,7 @@ This project is a Python-based macroeconomic forecasting engine that builds, val
 
 ### Model Comparison (RMSE — lower is better)
 
-| Variable | RW RMSE | VAR RMSE | Improvement % | DM Statistic | p-value | Stat. Significant? |
+| Variable | RW RMSE | VAR RMSE | Improvement % | DM Statistic | p-value | Stat. Significance |
 |---|---|---|---|---|---|---|
 | Real GDP       | 2.6415 | 2.5629 | 3.0 | -0.8125 | 0.4266 | No |
 | CPI            | 1.3144 | 0.9615 | 26.8 | -4.0786 | 0.0006 | Yes |
