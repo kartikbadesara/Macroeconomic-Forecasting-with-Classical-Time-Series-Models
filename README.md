@@ -111,38 +111,7 @@ A negative DM statistic means the VAR has lower forecast loss than the Random Wa
 | India Inflation | World Bank (`FP.CPI.TOTL.ZG`) | Annual → Quarterly | CPI % |
 | India Unemployment | World Bank (`SL.UEM.TOTL.ZS`) | Annual → Quarterly | Unemployment % |
 
-All data is downloaded once and saved locally to `data/` (excluded from version control).
 
-
----
-
-## Setup & Usage
-
-**1. Clone the repository**
-```bash
-git clone https://github.com/KartikBadesara/Macro_Forecasting_Research.git
-cd Macro_Forecasting_Research
-```
-
-**2. Create a virtual environment**
-```bash
-python -m venv .venv
-
-# Windows
-.venv\Scripts\Activate.ps1
-
-# Mac/Linux
-source .venv/bin/activate
-```
-
-**3. Install dependencies**
-```bash
-pip install -r requirements.txt
-```
-
-**4. Register the Jupyter kernel**
-```bash
-python -m ipykernel install --user --name=macro_env --display-name "Macro Project"
 ```
 
 **5. Open the notebook**
