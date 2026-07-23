@@ -112,11 +112,6 @@ A negative DM statistic means the VAR has lower forecast loss than the Random Wa
 | India Unemployment | World Bank (`SL.UEM.TOTL.ZS`) | Annual → Quarterly | Unemployment % |
 
 
-```
-
-**5. Open the notebook**
-
-Open `notebooks/01_data.ipynb` in VS Code, select the **Macro Project** kernel, and run all cells.
 
 ---
 
