@@ -1,133 +1,70 @@
-# Macroeconomic Forecasting & Policy Research
+# Macro Forecasting Research
 
-This project is a Python-based macroeconomic forecasting engine that builds, validates, and compares models for forecasting key macro variables — GDP growth, inflation, unemployment, and interest rates. Includes train-test backtesting, scenario analysis with fan charts, and a Diebold-Mariano test for statistical significance.
+I built this to teach myself how macroeconomic forecasting actually works — not just the theory, but the full pipeline from pulling real data to producing statistically validated results.
+
+The project forecasts four US macro variables (real GDP, CPI inflation, unemployment, the Fed funds rate) using a VAR model, and tests whether it meaningfully beats a random walk using the Diebold-Mariano test.
+
+---
+
+![Macro Overview](macro_overview.png)
+
+---
+
+## What it does
+
+- Pulls FRED data for GDP, CPI, unemployment, and the Fed funds rate (2000–2024)
+- Trains on pre-2020 data, tests on 2020–2024 out-of-sample (includes the COVID shock)
+- Compares Random Walk, AR(4), and VAR models
+- Runs a Diebold-Mariano test to check if the VAR's improvement is statistically significant
+- Builds three scenarios (baseline, upside, downside) with 80% confidence bands
 
 ---
 
 ## Results
 
-### Model Comparison (RMSE — lower is better)
+![GDP Scenario](gdp_scenario_chart.png)
 
-| Variable | RW RMSE | VAR RMSE | Improvement % | DM Statistic | p-value | Stat. Significance |
-|---|---|---|---|---|---|---|
-| Real GDP       | 2.6415 | 2.5629 | 3.0 | -0.8125 | 0.4266 | No |
-| CPI            | 1.3144 | 0.9615 | 26.8 | -4.0786 | 0.0006 | Yes |
-| Unemployment   | 35.3066 | 35.0438 | 0.7 | -0.8627 | 0.399 | No |
-| Fed Funds Rate | 123.6874 | 122.6876 | 0.8 | -2.1874 | 0.0414 | Yes |
-
-
----
-
-### Charts
-
-**Macro Overview — All 4 Indicators (2000–2024)**
-
-![Macro Overview](outputs/macro_overview.png)
-
----
-
-**VAR Model — Forecast vs Actual (Test Period)**
-
-![VAR Forecast](outputs/var_forecast.png)
-
----
-
-**Scenario Fan Charts — Baseline, Upside & Downside**
-
-![Scenario Fan Charts](outputs/scenario_fan_charts.png)
-
----
-
-**GDP Scenario Chart (Report-Ready)**
-
-![GDP Scenarios](outputs/gdp_scenario_chart.png)
-
----
-
-**Diebold-Mariano Test Results**
-
-![DM Test](outputs/dm_test_results.png)
+Full results are in `outputs/final_model_evaluation.csv`.
 
 ---
 
 ## Models
 
-### 1. Random Walk (Benchmark)
-Predicts next quarter = current quarter. No learning, no parameters. Every other model is judged against this.
+**Random Walk** — predicts zero change each period. The benchmark every model has to beat.
 
-### 2. AR(4) — AutoRegressive Model
-Forecasts each variable using its own last 4 quarters. Single-variable, simple, interpretable.
+**AR(4)** — forecasts each variable from its own last 4 quarters.
 
+**VAR(p)** — models all four variables together, each depending on the recent history of the others. Lag order picked by AIC.
+
+**Scenarios** — shocks applied to the baseline:
+- Upside: positive productivity shock (+1.5pp GDP, −0.3pp inflation)
+- Downside: oil price spike (−2.0pp GDP, +1.5pp inflation)
+
+---
+
+## Setup
+
+```bash
+git clone https://github.com/KartikBadesara/Macro_Forecasting_Research.git
+cd Macro_Forecasting_Research
+python -m venv .venv && .venv\Scripts\Activate.ps1
+pip install -r requirements.txt
 ```
-GDP(t) = α + β₁·GDP(t-1) + β₂·GDP(t-2) + β₃·GDP(t-3) + β₄·GDP(t-4) + ε
-```
 
-### 3. VAR — Vector AutoRegression
-Forecasts all four variables simultaneously. Each variable depends on the recent history of all other variables, capturing macro interdependencies (e.g. how an interest rate shock feeds into unemployment).
+Open `notebooks/01_data.ipynb`, select the Macro Project kernel, and run all cells.
 
-```
-Y(t) = A₁·Y(t-1) + A₂·Y(t-2) + ... + Aₚ·Y(t-p) + ε
-```
-Lag order selected automatically using AIC.
+Data downloads automatically on first run and is saved locally. Charts go to `outputs/`.
 
 ---
 
-## Scenario Analysis
+## Stack
 
-Three forecast paths are produced over the test horizon:
-
-| Scenario | Assumption | GDP shock | CPI shock |
-|---|---|---|---|
-| **Baseline** | Model forecast, no additional shock | — | — |
-| **Upside** | Positive productivity shock | +1.5% | -0.3% |
-| **Downside** | Stagflation / oil price spike | -2.0% | +1.5% |
-
-Shocks phase in linearly over 4 quarters to simulate gradual transmission.
+Python · pandas · statsmodels · scipy · pandas-datareader
 
 ---
 
-## Statistical Validation
+## References
 
-### Diebold-Mariano Test
-The DM test (Diebold & Mariano, 1995) tests whether the difference in forecast accuracy between the VAR and Random Walk is statistically significant or could be due to chance.
-
-- **H₀**: VAR and Random Walk have equal predictive accuracy
-- **H₁**: VAR is significantly more accurate
-- **Rejection threshold**: p-value < 0.05
-
-A negative DM statistic means the VAR has lower forecast loss than the Random Walk. 
-
----
-
-## Data Sources
-
-| Dataset | Source | Frequency | Variables |
-|---|---|---|---|
-| US Real GDP | FRED (`GDPC1`) | Quarterly | GDP index |
-| US CPI | FRED (`CPIAUCSL`) | Monthly → Quarterly | Consumer prices |
-| US Unemployment | FRED (`UNRATE`) | Monthly → Quarterly | Unemployment rate |
-| Federal Funds Rate | FRED (`FEDFUNDS`) | Monthly → Quarterly | Policy interest rate |
-| India GDP Growth | World Bank (`NY.GDP.MKTP.KD.ZG`) | Annual → Quarterly | GDP growth % |
-| India Inflation | World Bank (`FP.CPI.TOTL.ZG`) | Annual → Quarterly | CPI % |
-| India Unemployment | World Bank (`SL.UEM.TOTL.ZS`) | Annual → Quarterly | Unemployment % |
-
-
-
----
-
-## Key References
-
-- Diebold, F.X. and Mariano, R.S. (1995). *Comparing Predictive Accuracy*. Journal of Business & Economic Statistics.
-- Sims, C.A. (1980). *Macroeconomics and Reality*. Econometrica. *(Original VAR paper)*
-- Stock, J.H. and Watson, M.W. (2001). *Vector Autoregressions*. Journal of Economic Perspectives.
-
----
-
-## Author
-
-**Kartik Badesara**
-[github.com/KartikBadesara](https://github.com/KartikBadesara)
-
----
-
-
+- Diebold & Mariano (1995). Comparing Predictive Accuracy. *JBES*
+- Sims (1980). Macroeconomics and Reality. *Econometrica*
+- FRED — fred.stlouisfed.org
