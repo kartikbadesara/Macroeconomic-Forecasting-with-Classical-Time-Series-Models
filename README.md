@@ -64,7 +64,7 @@ I wanted to better understand how traditional econometric models are applied to 
 
 ### 1. Random Walk (Benchmark)
 
-Assumes the best prediction for the next observation is the most recent observation. This serves as a strong benchmark for persistent macroeconomic time series.
+Assumes the best prediction for the next observation is the most recent observation. This serves as a strong benchmark for persistent macroeconomic time series.A simple benchmark that assumes the next value will be equal to the most recent observation.
 
 ### 2. AR(4) - AutoRegressive Model
 
@@ -169,8 +169,9 @@ Future work could include Bayesian VAR, machine learning models, and additional 
 
 ## Author
 
-Kartik Badesara
-github.com/KartikBadesara
+**Kartik Badesara**
+
+GitHub: https://github.com/KartikBadesara
 
 ---
 
