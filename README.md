@@ -64,7 +64,7 @@ I wanted to better understand how traditional econometric models are applied to 
 
 ### 1. Random Walk (Benchmark)
 
-Predicts next quarter = current quarter. No learning, no parameters. Every other model is judged against this.
+Assumes the best prediction for the next observation is the most recent observation. This serves as a strong benchmark for persistent macroeconomic time series.
 
 ### 2. AR(4) - AutoRegressive Model
 
