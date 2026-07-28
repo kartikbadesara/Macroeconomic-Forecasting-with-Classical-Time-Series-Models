@@ -1,6 +1,10 @@
 # Macro Forecasting Research
 
-This is a Python-based macroeconomic forecasting project that builds, validates, and compares models for forecasting key US macro variables: GDP growth, inflation, unemployment, and the federal funds rate. Includes train-test backtesting, scenario analysis with fan charts, and a Diebold-Mariano test for statistical significance.
+This project explores classical time-series forecasting techniques for predicting key U.S. macroeconomic indicators using publicly available FRED data.
+
+I compare three forecasting approaches—Random Walk, Autoregressive (AR), and Vector Autoregression (VAR)—to evaluate whether modeling relationships between economic variables improves forecasting accuracy.
+
+The project focuses on GDP growth, inflation (CPI), unemployment, and the Federal Funds Rate.
 
 ---
 
