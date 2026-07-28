@@ -1,6 +1,6 @@
 # Macro Forecasting Research
 
-A Python-based macroeconomic forecasting project that builds, validates, and compares models for forecasting key US macro variables: GDP growth, inflation, unemployment, and the federal funds rate. Includes train-test backtesting, scenario analysis with fan charts, and a Diebold-Mariano test for statistical significance.
+This is a Python-based macroeconomic forecasting project that builds, validates, and compares models for forecasting key US macro variables: GDP growth, inflation, unemployment, and the federal funds rate. Includes train-test backtesting, scenario analysis with fan charts, and a Diebold-Mariano test for statistical significance.
 
 ---
 
@@ -15,7 +15,6 @@ A Python-based macroeconomic forecasting project that builds, validates, and com
 3. Backtests on pre-2020 training data, evaluates on 2020-2024 test data (includes the COVID shock)
 4. Runs a Diebold-Mariano test to statistically verify whether the VAR beats the benchmark
 5. Produces scenario forecasts: baseline, upside, and downside paths with 80% confidence bands
-6. Saves publication-ready charts to the outputs/ folder
 
 ---
 
@@ -30,7 +29,6 @@ A Python-based macroeconomic forecasting project that builds, validates, and com
 | Unemployment | - | - | - | - | - | - |
 | Fed Funds Rate | - | - | - | - | - | - |
 
-> Fill this in using outputs/final_model_evaluation.csv
 
 ### Charts
 
@@ -74,7 +72,6 @@ Forecasts all four variables simultaneously. Each variable depends on the recent
 Y(t) = A1*Y(t-1) + A2*Y(t-2) + ... + Ap*Y(t-p) + u(t)
 ```
 
-Lag order selected automatically using AIC.
 
 ---
 
@@ -102,7 +99,7 @@ The DM test (Diebold and Mariano, 1995) tests whether the difference in forecast
 - H1: VAR is significantly more accurate
 - Rejection threshold: p-value < 0.05
 
-A negative DM statistic means the VAR has lower forecast loss than the Random Walk. Results are saved to outputs/diebold_mariano_results.csv.
+A negative DM statistic means the VAR has lower forecast loss than the Random Walk. 
 
 ---
 
@@ -115,81 +112,9 @@ A negative DM statistic means the VAR has lower forecast loss than the Random Wa
 | US Unemployment | FRED (UNRATE) | Monthly to Quarterly | Unemployment rate |
 | Federal Funds Rate | FRED (FEDFUNDS) | Monthly to Quarterly | Policy interest rate |
 
-All data is downloaded once and saved locally to data/ (excluded from version control).
 
 ---
 
-## Project Structure
-
-```
-Macro_Forecasting_Research/
-|-- notebooks/
-|   `-- 01_data.ipynb
-|-- outputs/
-|   |-- macro_overview.png
-|   |-- forecast_vs_actual.png
-|   |-- var_forecast.png
-|   |-- scenario_fan_charts.png
-|   |-- gdp_scenario_chart.png
-|   |-- dm_test_results.png
-|   |-- model_comparison.csv
-|   |-- scenario_summary.csv
-|   |-- diebold_mariano_results.csv
-|   `-- final_model_evaluation.csv
-|-- data/
-|-- macro_overview.png
-|-- gdp_scenario_chart.png
-|-- requirements.txt
-|-- LICENSE
-|-- .gitignore
-`-- README.md
-```
-
----
-
-## Setup and Usage
-
-1. Clone the repository
-```
-git clone https://github.com/KartikBadesara/Macro_Forecasting_Research.git
-cd Macro_Forecasting_Research
-```
-
-2. Create a virtual environment
-```
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-```
-
-3. Install dependencies
-```
-pip install -r requirements.txt
-```
-
-4. Register the Jupyter kernel
-```
-python -m ipykernel install --user --name=macro_env --display-name "Macro Project"
-```
-
-5. Open notebooks/01_data.ipynb in VS Code, select the Macro Project kernel, and run all cells.
-
-Data downloads automatically on first run and is cached locally. All outputs are saved to outputs/.
-
----
-
-## Dependencies
-
-```
-pandas
-numpy
-matplotlib
-statsmodels
-pandas-datareader
-scikit-learn
-scipy
-ipykernel
-jupyter
-```
 
 ---
 
@@ -208,4 +133,3 @@ github.com/KartikBadesara
 
 ---
 
-Built with Python, pandas, statsmodels, scipy
