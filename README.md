@@ -1,10 +1,16 @@
-# Macro Forecasting Research
+# Macroeconomic Forecasting with Classical Time Series Models
 
 This project explores classical time-series forecasting techniques for predicting key U.S. macroeconomic indicators using publicly available FRED data.
 
 I compare three forecasting approaches—Random Walk, Autoregressive (AR), and Vector Autoregression (VAR)—to evaluate whether modeling relationships between economic variables improves forecasting accuracy.
 
 The project focuses on GDP growth, inflation (CPI), unemployment, and the Federal Funds Rate.
+
+---
+
+## Why I Built This
+
+I wanted to better understand how traditional econometric models are applied to real-world macroeconomic forecasting. Rather than using machine learning immediately, I chose to start with widely used statistical models and compare their strengths and limitations on real economic data.
 
 ---
 
@@ -119,6 +125,27 @@ A negative DM statistic means the VAR has lower forecast loss than the Random Wa
 
 ---
 
+## Key Learnings
+
+- Working with economic time-series data
+- Implementing AR and VAR models
+- Performing rolling forecast evaluation
+- Comparing models using RMSE and the Diebold–Mariano test
+- Understanding the trade-offs between univariate and multivariate forecasting
+
+---
+
+## Dependencies
+
+pandas
+numpy
+matplotlib
+statsmodels
+pandas-datareader
+scikit-learn
+scipy
+ipykernel
+jupyter
 
 ---
 
@@ -127,6 +154,16 @@ A negative DM statistic means the VAR has lower forecast loss than the Random Wa
 - Diebold, F.X. and Mariano, R.S. (1995). Comparing Predictive Accuracy. Journal of Business and Economic Statistics.
 - Sims, C.A. (1980). Macroeconomics and Reality. Econometrica.
 - Stock, J.H. and Watson, M.W. (2001). Vector Autoregressions. Journal of Economic Perspectives.
+
+---
+
+# Conclusion
+
+Among the models evaluated, the VAR model generally produced stronger forecasts for variables that are economically interconnected, while simpler models remained competitive for highly persistent series.
+
+This project helped me understand the complete forecasting workflow—from collecting macroeconomic data to evaluating competing models using statistical tests.
+
+Future work could include Bayesian VAR, machine learning models, and additional macroeconomic indicators.
 
 ---
 
